@@ -3,380 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adeel Ahmad & Khadija Butt | Wedding Invitation</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
-
-        :root {
-            --gold: #d4af37;
-            --dark: #0a0a0a;
-            --deep: #111111;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--dark);
-            color: #eee;
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--gold);
-        }
-
-        /* Hero - Theatre Curtain Style */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(10,10,10,0.75), rgba(10,10,10,0.85)), 
-                        url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-        .hero-content {
-            max-width: 820px;
-            padding: 2rem;
-            animation: fadeIn 2s ease forwards;
-        }
-        .hero h1 {
-            font-size: 4.8rem;
-            line-height: 1.1;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-        }
-        .hero .amp {
-            font-size: 3rem;
-            color: var(--gold);
-            margin: 10px 0 20px;
-            display: block;
-        }
-        .hero p {
-            font-size: 1.35rem;
-            color: #ddd;
-            margin-bottom: 2rem;
-        }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1rem;
-            letter-spacing: 4px;
-            color: var(--gold);
-            animation: pulse 2.5s infinite;
-        }
-        @keyframes pulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
-
-        section {
-            padding: 110px 5%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .intro {
-            text-align: center;
-            font-size: 1.35rem;
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        /* Scratch Reveal - Improved to match premium feel */
-        .date-section {
-            background: var(--deep);
-            text-align: center;
-        }
-        .scratch-title {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-        }
-        .scratch-container {
-            width: 340px;
-            height: 200px;
-            margin: 40px auto;
-            position: relative;
-            border: 10px solid var(--gold);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.35);
-            background: #1a1a1a;
-        }
-        #scratch-canvas {
-            position: absolute;
-            top: 0; left: 0;
-            cursor: url('https://cdn-icons-png.flaticon.com/32/109/109614.png') 16 16, auto; /* coin-like cursor */
-        }
-        .scratch-reveal {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, #1f1f1f, #2c2c2c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: var(--gold);
-            text-align: center;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 1.2s ease;
-        }
-        .scratch-reveal.show { opacity: 1; }
-
-        /* Countdown */
-        .countdown-section {
-            background: #111;
-            text-align: center;
-        }
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            margin: 40px 0;
-        }
-        .countdown div {
-            background: #1a1a1a;
-            padding: 18px 28px;
-            border-radius: 12px;
-            min-width: 90px;
-            border: 3px solid var(--gold);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-        }
-        .countdown span {
-            display: block;
-            font-size: 2.6rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
-        .countdown small { font-size: 0.95rem; color: #999; }
-
-        .event {
-            background: #1a1a1a;
-            padding: 35px;
-            margin: 30px 0;
-            border-radius: 12px;
-            border-left: 6px solid var(--gold);
-        }
-
-        /* RSVP */
-        .rsvp {
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 50px 30px;
-            text-align: center;
-        }
-        form input, form textarea {
-            width: 100%;
-            padding: 15px;
-            margin: 12px 0;
-            background: #222;
-            border: 1px solid var(--gold);
-            color: white;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-        form button {
-            background: var(--gold);
-            color: #0a0a0a;
-            padding: 16px;
-            font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        form button:hover {
-            background: #e5c14f;
-            transform: scale(1.04);
-        }
-
-        footer {
-            text-align: center;
-            padding: 80px 20px 40px;
-            background: #050505;
-            color: #666;
-            font-size: 0.95rem;
-        }
-    </style>
+    <title>BARAT • Adeel & Khadija</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts (exact Playfair + elegant sans used in theatre demos) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <!-- Hero -->
+    <!-- HERO - Theatrical curtain opening -->
     <header class="hero">
+        <div class="curtain-left"></div>
+        <div class="curtain-right"></div>
+        
         <div class="hero-content">
-            <h1>Adeel Ahmad</h1>
-            <span class="amp">&amp;</span>
-            <h1>Khadija Butt</h1>
-            <p>request the honour of your presence at our wedding celebrations</p>
-            <div class="scroll-hint">↓ Scroll to begin ↓</div>
+            <div class="invite-by">
+                Talha &amp; Ramisha Butt<br>
+                <span class="warmly">warmly invite you</span>
+            </div>
+            
+            <h1 class="couple">Adeel Ahmad</h1>
+            <div class="amp">&amp;</div>
+            <h1 class="couple">Khadija Butt</h1>
+            
+            <div class="event-title">BARAT</div>
+            <p class="tagline">of our beloved sister</p>
+            
+            <div class="scroll-hint">↓ Scroll to begin the celebration ↓</div>
         </div>
     </header>
 
-    <!-- Introduction -->
+    <!-- Intro -->
     <section class="intro">
-        <p>With hearts full of joy and gratitude, we invite you to share in the most beautiful moments of our lives as we begin our journey together.</p>
+        <p>We are overjoyed to invite you to the grand Barat procession as our sister begins her beautiful new chapter.</p>
     </section>
 
-    <!-- Scratch Reveal -->
+    <!-- Scratch to Unveil -->
     <section class="date-section">
-        <h2 class="scratch-title">Scratch to Unveil Our Dates</h2>
+        <h2 class="section-title">Scratch to Reveal the Date</h2>
         
-        <div class="scratch-container">
-            <canvas id="scratch-canvas" width="340" height="200"></canvas>
-            <div class="scratch-reveal" id="reveal">
-                <strong style="font-size:1.9rem;">Mehndi</strong><br>
-                <span style="font-size:1.25rem;">10 November 2026 • Sambal Chak</span><br><br>
-                <strong style="font-size:1.9rem;">Nikkah</strong><br>
-                <span style="font-size:1.25rem;">15 November 2026 • 4:00 PM</span>
+        <div class="scratch-wrapper">
+            <canvas id="scratch-canvas" width="360" height="220"></canvas>
+            <div class="reveal-content" id="reveal">
+                <div class="reveal-date">
+                    <strong>10 November 2026</strong><br>
+                    <span class="venue">Sambal Chak, Lahore</span>
+                </div>
             </div>
         </div>
-        <p style="color:#aaa; margin-top:15px;">Use your finger or mouse to scratch the card</p>
+        <p class="scratch-instruction">Scratch the golden card with your finger or mouse</p>
     </section>
 
-    <!-- Countdown (to Nikkah) -->
-    <section class="countdown-section">
-        <h2>Countdown to Our Nikkah</h2>
-        <div class="countdown" id="countdown">
-            <div><span id="days">00</span><small>Days</small></div>
-            <div><span id="hours">00</span><small>Hours</small></div>
-            <div><span id="minutes">00</span><small>Minutes</small></div>
-            <div><span id="seconds">00</span><small>Seconds</small></div>
-        </div>
-    </section>
-
-    <!-- Events -->
-    <section>
-        <h2 style="text-align:center; margin-bottom:40px;">Our Celebrations</h2>
-        
-        <div class="event">
-            <h3>Mehndi Ceremony</h3>
-            <p><strong>Date:</strong> 10 November 2026<br>
-               <strong>Venue:</strong> Sambal Chak<br>
-               <strong>Time:</strong> [Please add time]</p>
-        </div>
-
-        <div class="event">
-            <h3>Nikkah & Reception</h3>
-            <p><strong>Date:</strong> 15 November 2026<br>
-               <strong>Time:</strong> 4:00 PM onwards<br>
-               <strong>Venue:</strong> [Insert full venue name & address]</p>
+    <!-- Event Details -->
+    <section class="details">
+        <h2 class="section-title">Barat Details</h2>
+        <div class="event-card">
+            <div class="event-info">
+                <strong>Date:</strong> 10 November 2026<br>
+                <strong>Venue:</strong> Sambal Chak, Lahore<br>
+                <strong>Time:</strong> [Add exact time here]<br>
+                <strong>Dress Code:</strong> Formal / Traditional
+            </div>
         </div>
     </section>
 
     <!-- RSVP -->
-    <section class="rsvp">
-        <h2>RSVP</h2>
-        <p style="margin-bottom:30px;">Kindly confirm your attendance by [date].</p>
-        
-        <form action="https://formspree.io/f/your-form-id" method="POST">
-            <input type="text" name="name" placeholder="Your Full Name" required>
-            <input type="email" name="email" placeholder="Email Address">
-            <input type="text" name="guests" placeholder="Number of Guests Attending">
-            <textarea name="message" rows="3" placeholder="Message for the couple (optional)"></textarea>
-            <button type="submit">Submit RSVP</button>
+    <section class="rsvp-section">
+        <h2 class="section-title">RSVP</h2>
+        <form id="rsvp-form" action="https://formspree.io/f/your-form-id" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Email">
+            <input type="text" name="guests" placeholder="Number of Guests">
+            <textarea name="message" placeholder="Message for the family (optional)"></textarea>
+            <button type="submit">Send My RSVP</button>
         </form>
     </section>
 
     <footer>
-        <p>Made with love • Adeel Ahmad &amp; Khadija Butt • November 2026</p>
+        <p>Made with love for the Barat of Adeel &amp; Khadija • November 2026</p>
     </footer>
 
-    <script>
-        // === COUNTDOWN (to Nikkah 15 Nov 2026 16:00) ===
-        const weddingDate = new Date("2026-11-15T16:00:00").getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            if (distance < 0) {
-                document.getElementById("countdown").innerHTML = `<h3 style="color:#d4af37;">The day has arrived! 🎉</h3>`;
-                return;
-            }
-
-            const days = Math.floor(distance / (1000*60*60*24));
-            const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-            const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-            const seconds = Math.floor((distance % (1000*60)) / 1000);
-
-            document.getElementById("days").textContent = String(days).padStart(2,'0');
-            document.getElementById("hours").textContent = String(hours).padStart(2,'0');
-            document.getElementById("minutes").textContent = String(minutes).padStart(2,'0');
-            document.getElementById("seconds").textContent = String(seconds).padStart(2,'0');
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // === IMPROVED SCRATCH CARD (closer to premium theatre style) ===
-        const canvas = document.getElementById('scratch-canvas');
-        const ctx = canvas.getContext('2d', { willReadFrequently: true });
-        const reveal = document.getElementById('reveal');
-
-        // Dark metallic scratch layer
-        ctx.fillStyle = '#1f1f1f';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        // Add subtle texture lines
-        ctx.strokeStyle = 'rgba(80,80,80,0.4)';
-        ctx.lineWidth = 2;
-        for (let i = 0; i < canvas.height; i += 6) {
-            ctx.beginPath();
-            ctx.moveTo(0, i);
-            ctx.lineTo(canvas.width, i);
-            ctx.stroke();
-        }
-
-        let isScratching = false;
-        let scratchedPercent = 0;
-
-        function getMousePos(e) {
-            const rect = canvas.getBoundingClientRect();
-            return {
-                x: (e.touches ? e.touches[0].clientX : e.clientX) - rect.left,
-                y: (e.touches ? e.touches[0].clientY : e.clientY) - rect.top
-            };
-        }
-
-        function scratch(e) {
-            if (!isScratching) return;
-            const pos = getMousePos(e);
-            
-            ctx.globalCompositeOperation = 'destination-out';
-            ctx.beginPath();
-            ctx.arc(pos.x, pos.y, 28, 0, Math.PI * 2);   // bigger brush
-            ctx.fill();
-
-            // Check how much is scratched
-            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            let transparent = 0;
-            for (let i = 3; i < imageData.data.length; i += 4) {
-                if (imageData.data[i] < 50) transparent++;
-            }
-            scratchedPercent = (transparent / (canvas.width * canvas.height)) * 100;
-
-            if (scratchedPercent > 65) {
-                reveal.classList.add('show');
-            }
-        }
-
-        canvas.addEventListener('mousedown', () => isScratching = true);
-        canvas.addEventListener('mouseup', () => isScratching = false);
-        canvas.addEventListener('mousemove', scratch);
-
-        canvas.addEventListener('touchstart', (e) => { isScratching = true; scratch(e); });
-        canvas.addEventListener('touchend', () => isScratching = false);
-        canvas.addEventListener('touchmove', scratch);
-
-        // Auto reveal after ~8 seconds for demo
-        setTimeout(() => {
-            if (scratchedPercent < 50) reveal.classList.add('show');
-        }, 8500);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
