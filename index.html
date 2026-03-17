@@ -5,81 +5,250 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BARAT • Adeel & Khadija</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts (exact Playfair + elegant sans used in theatre demos) -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- HERO - Theatrical curtain opening -->
-    <header class="hero">
-        <div class="curtain-left"></div>
-        <div class="curtain-right"></div>
-        
-        <div class="hero-content">
-            <div class="invite-by">
-                Talha &amp; Ramisha Butt<br>
-                <span class="warmly">warmly invite you</span>
-            </div>
-            
-            <h1 class="couple">Adeel Ahmad</h1>
-            <div class="amp">&amp;</div>
-            <h1 class="couple">Khadija Butt</h1>
-            
-            <div class="event-title">BARAT</div>
-            <p class="tagline">of our beloved sister</p>
-            
-            <div class="scroll-hint">↓ Scroll to begin the celebration ↓</div>
+
+    <!-- ═══════════════════════════════════════════════════
+         SPLASH SCREEN
+    ════════════════════════════════════════════════════ -->
+    <div class="splash" id="splash">
+        <div class="splash-inner">
+            <div class="splash-monogram">A<span class="mono-amp">&amp;</span>K</div>
+            <div class="splash-rule"></div>
+            <p class="splash-sub">BARAT</p>
+            <p class="tap-label">Tap to continue</p>
         </div>
-    </header>
+    </div>
 
-    <!-- Intro -->
-    <section class="intro">
-        <p>We are overjoyed to invite you to the grand Barat procession as our sister begins her beautiful new chapter.</p>
-    </section>
+    <!-- ═══════════════════════════════════════════════════
+         MAIN INVITE
+    ════════════════════════════════════════════════════ -->
+    <main id="main" class="hidden">
 
-    <!-- Scratch to Unveil -->
-    <section class="date-section">
-        <h2 class="section-title">Scratch to Reveal the Date</h2>
-        
-        <div class="scratch-wrapper">
-            <canvas id="scratch-canvas" width="360" height="220"></canvas>
-            <div class="reveal-content" id="reveal">
-                <div class="reveal-date">
-                    <strong>10 November 2026</strong><br>
-                    <span class="venue">Sambal Chak, Lahore</span>
+        <!-- HERO — theatrical curtain reveal -->
+        <section class="hero">
+            <div class="curtain left"></div>
+            <div class="curtain right"></div>
+
+            <div class="hero-content">
+                <p class="host-line">Talha &amp; Ramisha Butt</p>
+                <p class="host-action"><em>warmly invite you to the</em></p>
+
+                <div class="barat-title">BARAT</div>
+                <p class="of-sister"><em>of their beloved sister</em></p>
+
+                <div class="couple-block">
+                    <h1 class="bride-groom">Adeel Ahmad</h1>
+                    <div class="golden-amp">&amp;</div>
+                    <h1 class="bride-groom">Khadija Butt</h1>
+                </div>
+
+                <div class="scroll-hint">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                    <span>Scroll to explore</span>
                 </div>
             </div>
-        </div>
-        <p class="scratch-instruction">Scratch the golden card with your finger or mouse</p>
-    </section>
+        </section>
 
-    <!-- Event Details -->
-    <section class="details">
-        <h2 class="section-title">Barat Details</h2>
-        <div class="event-card">
-            <div class="event-info">
-                <strong>Date:</strong> 10 November 2026<br>
-                <strong>Venue:</strong> Sambal Chak, Lahore<br>
-                <strong>Time:</strong> [Add exact time here]<br>
-                <strong>Dress Code:</strong> Formal / Traditional
+        <!-- ══════════════════════════════════════════════
+             SCRATCH SECTION  (full-screen, scroll-gated)
+        ═══════════════════════════════════════════════ -->
+        <section class="section section-scratch" id="reveal-section">
+            <div class="section-tag">Reveal</div>
+            <h2 class="section-heading">Scratch to discover the date</h2>
+
+            <div class="scratch-row">
+
+                <!-- Card 0 · Month -->
+                <div class="scratch-unit">
+                    <div class="scratch-card-wrap">
+                        <div class="scratch-behind">
+                            <span class="sc-value sc-month">Nov</span>
+                        </div>
+                        <canvas class="scratch-canvas" data-idx="0"></canvas>
+                    </div>
+                    <p class="scratch-label">Month</p>
+                </div>
+
+                <!-- Card 1 · Day -->
+                <div class="scratch-unit">
+                    <div class="scratch-card-wrap">
+                        <div class="scratch-behind">
+                            <span class="sc-value sc-day">12</span>
+                        </div>
+                        <canvas class="scratch-canvas" data-idx="1"></canvas>
+                    </div>
+                    <p class="scratch-label">Day</p>
+                </div>
+
+                <!-- Card 2 · Year -->
+                <div class="scratch-unit">
+                    <div class="scratch-card-wrap">
+                        <div class="scratch-behind">
+                            <span class="sc-value sc-year">2026</span>
+                        </div>
+                        <canvas class="scratch-canvas" data-idx="2"></canvas>
+                    </div>
+                    <p class="scratch-label">Year</p>
+                </div>
+
+            </div><!-- /.scratch-row -->
+
+            <!-- Progress pips + gate hint -->
+            <div id="scratch-gate">
+                <div class="gate-pips">
+                    <span class="pip" id="pip-0"></span>
+                    <span class="pip" id="pip-1"></span>
+                    <span class="pip" id="pip-2"></span>
+                </div>
+                <p class="gate-hint">Scratch all three cards to continue</p>
+                <div class="gate-lock" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                        <rect x="3" y="11" width="18" height="11" rx="2"/>
+                        <path d="M7 11V7a5 5 0 0110 0v4"/>
+                    </svg>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- RSVP -->
-    <section class="rsvp-section">
-        <h2 class="section-title">RSVP</h2>
-        <form id="rsvp-form" action="https://formspree.io/f/your-form-id" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Email">
-            <input type="text" name="guests" placeholder="Number of Guests">
-            <textarea name="message" placeholder="Message for the family (optional)"></textarea>
-            <button type="submit">Send My RSVP</button>
-        </form>
-    </section>
+        </section>
 
-    <footer>
-        <p>Made with love for the Barat of Adeel &amp; Khadija • November 2026</p>
-    </footer>
+        <!-- ══════════════════════════════════════════════
+             GATED CONTENT — revealed only after all 3 scratched
+        ═══════════════════════════════════════════════ -->
+        <div id="gated-content">
+
+            <!-- COUNTDOWN -->
+            <section class="section section-dark" data-reveal>
+                <div class="section-tag">Countdown</div>
+                <div class="countdown-grid">
+                    <div class="cd-unit"><span id="cd-days">--</span><label>Days</label></div>
+                    <div class="cd-unit"><span id="cd-hours">--</span><label>Hours</label></div>
+                    <div class="cd-unit"><span id="cd-min">--</span><label>Min</label></div>
+                    <div class="cd-unit"><span id="cd-sec">--</span><label>Sec</label></div>
+                </div>
+                <p class="cd-sub">until the big day</p>
+            </section>
+
+            <!-- VENUE -->
+            <section class="section venue-section" data-reveal>
+                <p class="venue-pre">The celebration will take place at</p>
+                <div class="venue-ornament" aria-hidden="true">
+                    <svg viewBox="0 0 240 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0" y1="35" x2="85" y2="35" stroke="#d4af37" stroke-width="0.7" opacity="0.4"/>
+                        <line x1="155" y1="35" x2="240" y2="35" stroke="#d4af37" stroke-width="0.7" opacity="0.4"/>
+                        <circle cx="120" cy="35" r="14" stroke="#d4af37" stroke-width="0.8" fill="none" opacity="0.55"/>
+                        <circle cx="120" cy="35" r="7" stroke="#d4af37" stroke-width="0.6" fill="none" opacity="0.4"/>
+                        <circle cx="120" cy="35" r="2" fill="#d4af37" opacity="0.5"/>
+                        <path d="M95 35 L105 22 L115 35 L105 48Z" stroke="#d4af37" stroke-width="0.6" fill="none" opacity="0.3"/>
+                        <path d="M125 35 L135 22 L145 35 L135 48Z" stroke="#d4af37" stroke-width="0.6" fill="none" opacity="0.3"/>
+                        <circle cx="60" cy="35" r="3" stroke="#d4af37" stroke-width="0.8" fill="none" opacity="0.35"/>
+                        <circle cx="180" cy="35" r="3" stroke="#d4af37" stroke-width="0.8" fill="none" opacity="0.35"/>
+                    </svg>
+                </div>
+                <h2 class="venue-name">Encore by Zafar Group</h2>
+                <p class="venue-city">Lahore, Pakistan</p>
+                <p class="venue-date-line">November 12, 2026 &nbsp;•&nbsp; 7:00 PM</p>
+                <p class="venue-reception">Dinner &amp; Reception to Follow</p>
+            </section>
+
+            <!-- PROGRAM -->
+            <section class="section" data-reveal>
+                <div class="section-tag">Program</div>
+                <h2 class="section-heading">The Day's Celebrations</h2>
+
+                <div class="program-list">
+                    <div class="prog-item">
+                        <h3>Welcome &amp; Arrival</h3>
+                        <p>Guests arrive and are warmly welcomed</p>
+                        <p>Tea, sherbet &amp; appetizers served</p>
+                    </div>
+                    <div class="prog-rule"></div>
+                    <div class="prog-item">
+                        <h3>Barat Procession</h3>
+                        <p>The groom arrives with the baraat</p>
+                        <p>Traditional welcome &amp; blessings</p>
+                    </div>
+                    <div class="prog-rule"></div>
+                    <div class="prog-item">
+                        <h3>Nikah Ceremony</h3>
+                        <p>The sacred Nikah takes place</p>
+                        <p>Qur'an recitation &amp; du'a</p>
+                    </div>
+                    <div class="prog-rule"></div>
+                    <div class="prog-item">
+                        <h3>Walima Dinner</h3>
+                        <p>Grand dinner reception</p>
+                        <p>Traditional Pakistani cuisine</p>
+                        <p>Desserts &amp; mithai to sweeten the evening</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DRESS CODE -->
+            <section class="section section-dark" data-reveal>
+                <div class="section-tag">Attire</div>
+                <h2 class="section-heading">Dress Code</h2>
+                <p class="dresscode-body">We invite you to dress elegantly and formally<br>to honour this blessed occasion with us.</p>
+                <div class="dresscode-pill">Formal &amp; Traditional Attire</div>
+            </section>
+
+            <!-- RSVP -->
+            <section class="section rsvp-section" data-reveal>
+                <div class="section-tag">RSVP</div>
+                <p class="rsvp-pre">Kindly let us know if you can join us</p>
+                <h2 class="section-heading">Confirm your attendance</h2>
+
+                <form id="rsvp-form" novalidate>
+                    <div class="field">
+                        <input type="text" name="name" id="f-name" placeholder=" " required autocomplete="name">
+                        <label for="f-name">Full Name <span class="req">*</span></label>
+                    </div>
+                    <div class="field">
+                        <input type="email" name="email" id="f-email" placeholder=" " autocomplete="email">
+                        <label for="f-email">Email (optional)</label>
+                    </div>
+                    <div class="radio-group">
+                        <p class="radio-label">Will you attend? <span class="req">*</span></p>
+                        <label class="radio-opt">
+                            <input type="radio" name="attend" value="yes" required>
+                            <span class="radio-box"></span>
+                            Yes, I'll be there!
+                        </label>
+                        <label class="radio-opt">
+                            <input type="radio" name="attend" value="no">
+                            <span class="radio-box"></span>
+                            No, I can't make it
+                        </label>
+                    </div>
+                    <div class="field">
+                        <textarea name="message" id="f-msg" rows="4" placeholder=" "></textarea>
+                        <label for="f-msg">Message for the family (optional)</label>
+                    </div>
+                    <button type="submit" class="btn-confirm">
+                        <span class="btn-text">Confirm</span>
+                        <span class="btn-check" aria-hidden="true">✓</span>
+                    </button>
+                </form>
+
+                <div class="rsvp-thanks hidden" id="rsvp-thanks">
+                    <p class="thanks-icon">✦</p>
+                    <p>Thank you! We look forward to celebrating with you.</p>
+                </div>
+            </section>
+
+            <!-- THANK YOU FOOTER -->
+            <footer class="section-thankyou" data-reveal>
+                <div class="ty-ornament" aria-hidden="true">✦</div>
+                <h2 class="ty-heading">Thank You</h2>
+                <p>For joining us on this blessed day.</p>
+                <p>Your presence is the greatest gift.</p>
+                <div class="ty-names">Talha &amp; Ramisha Butt</div>
+            </footer>
+
+        </div><!-- /#gated-content -->
+
+    </main>
 
     <script src="script.js"></script>
 </body>
