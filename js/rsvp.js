@@ -2,6 +2,8 @@
    rsvp.js — RSVP form validation & submission
    ============================================================ */
 
+import { startDots, stopDots } from './dots.js';
+
 // Paste your deployed Apps Script Web App URL here
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyX1pu5La61rhbw3P6NNYa_tMGwzIPXQIDMvEI8Rud6Gd4qTHn-rfvU4-_cNHnPgK5Z/exec';
 // Must match the SECRET value in your Apps Script
@@ -51,7 +53,7 @@ export function initRSVP() {
         const btn = form.querySelector('.btn-confirm');
         btn.classList.add('sent');
         btn.disabled = true;
-        btn.querySelector('.btn-text').textContent = 'Sending…';
+        startDots(btn.querySelector('.btn-text'), 'Sending');
 
         const payload = {
             secret:  SUBMIT_SECRET,
@@ -73,7 +75,8 @@ export function initRSVP() {
             // isn't left hanging; you can add retry logic here if needed
         }
 
-        btn.querySelector('.btn-text').textContent = 'Sent!';
+        stopDots();
+        btn.querySelector('.btn-text').textContent = 'Sent';
         setTimeout(() => showThanks(form, rsvpTy), 700);
     });
 }

@@ -675,7 +675,6 @@ form {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     width: 100%;
     padding: 18px;
     background: var(--gold);
@@ -692,8 +691,6 @@ form {
     margin-top: 8px;
 }
 .btn-confirm:hover { background: var(--gold-light); transform: translateY(-2px); }
-.btn-check { opacity: 0; }
-.btn-confirm.sent .btn-check { opacity: 1; }
 
 .rsvp-thanks {
     max-width: 520px;
