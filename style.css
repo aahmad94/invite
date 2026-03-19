@@ -204,19 +204,24 @@ body.curtains-open .hero-content {
 }
 
 .scroll-hint {
+    position: absolute;
+    bottom: clamp(28px, 5vw, 48px);
+    left: 0;
+    right: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 6px;
-    margin-top: 48px;
     color: var(--gold);
     text-decoration: none;
     font-size: 0.75rem;
     letter-spacing: 3px;
     text-transform: uppercase;
+    opacity: 0;
     animation: bob 2.6s ease-in-out infinite;
-    opacity: 0.8;
+    transition: opacity 1.2s 1.8s ease;
 }
+body.curtains-open .scroll-hint { opacity: 0.8; }
 .scroll-hint svg { opacity: 0.8; }
 
 /* ── SECTION SHELL ───────────────────────────────────── */
@@ -278,6 +283,7 @@ body.curtains-open .hero-content {
     align-items: center;
     justify-content: center;
     padding-block: clamp(60px, 10vw, 100px);
+    position: relative;
 }
 
 /* ── THREE SCRATCH CARDS ─────────────────────────────── */
@@ -385,6 +391,29 @@ body.curtains-open .hero-content {
 .gate-lock {
     color: rgba(212,175,55,0.35);
     margin-top: 4px;
+    animation: bob 2.6s ease-in-out infinite;
+}
+
+/* ── SCRATCH SCROLL HINT ─────────────────────────────── */
+.scratch-scroll-hint {
+    position: absolute;
+    bottom: clamp(28px, 5vw, 48px);
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: var(--gold);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+.scratch-scroll-hint svg { opacity: 0.8; }
+.scratch-scroll-hint.visible {
+    opacity: 0.8;
     animation: bob 2.6s ease-in-out infinite;
 }
 

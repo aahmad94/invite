@@ -140,11 +140,20 @@ function revealCard(idx) {
 
 /* ── Unlock gated content ─────────────────────────────── */
 function unlockContent() {
-    const gate  = document.getElementById('scratch-gate');
-    const gated = document.getElementById('gated-content');
+    const gate       = document.getElementById('scratch-gate');
+    const gated      = document.getElementById('gated-content');
+    const scrollHint = document.getElementById('scratch-scroll-hint');
 
     gate.style.opacity = '0';
     setTimeout(() => { gate.style.display = 'none'; }, 900);
+
+    // Show scroll hint at bottom of scratch section
+    if (scrollHint) {
+        scrollHint.classList.remove('hidden');
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            scrollHint.classList.add('visible');
+        }));
+    }
 
     gated.classList.add('unlocked');
     requestAnimationFrame(() => requestAnimationFrame(() => {
