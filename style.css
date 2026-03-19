@@ -757,6 +757,13 @@ form {
 }
 
 /* ── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 600px) {
+    .section-thankyou {
+        background-size: 160%;
+        background-position: center center;
+    }
+}
+
 @media (max-width: 400px) {
     .barat-title { letter-spacing: 7px; }
     .scratch-row { gap: 8px; }
