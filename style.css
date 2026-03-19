@@ -568,7 +568,7 @@ form {
 .field input,
 .field textarea {
     width: 100%;
-    padding: 20px 16px 8px;
+    padding: 26px 16px 8px;
     background: #1a0505;
     border: 1px solid #3d1010;
     border-radius: 6px;
@@ -582,6 +582,16 @@ form {
 .field input:focus,
 .field textarea:focus { border-color: var(--gold); }
 
+/* Override browser autofill background */
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:hover,
+.field input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #1a0505 inset;
+    -webkit-text-fill-color: var(--text);
+    border-color: var(--gold);
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 .field label {
     position: absolute;
     left: 16px;
@@ -594,13 +604,13 @@ form {
     background: #1a0505;
     padding: 0 4px;
 }
-.field textarea + label { top: 20px; transform: none; }
+.field textarea + label { top: 22px; transform: none; }
 
 .field input:focus + label,
 .field input:not(:placeholder-shown) + label,
 .field textarea:focus + label,
 .field textarea:not(:placeholder-shown) + label {
-    top: 10px;
+    top: 8px;
     transform: translateY(0);
     font-size: 0.72rem;
     color: var(--gold);
