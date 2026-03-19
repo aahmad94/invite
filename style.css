@@ -694,7 +694,7 @@ form {
 
 .rsvp-thanks {
     max-width: 520px;
-    margin: 36px auto 0;
+    margin: 0 auto;
     text-align: center;
     color: var(--gold);
     font-family: var(--ff-serif);
