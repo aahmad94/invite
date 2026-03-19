@@ -26,7 +26,14 @@ function shake(el) {
     el.addEventListener('animationend', () => { el.style.animation = ''; }, { once: true });
 }
 
-function showThanks(form, rsvpTy) {
+function showThanks(form, rsvpTy, attending) {
+    document.getElementById('thanks-icon').textContent = '♡';
+
+    if (!attending) {
+        document.getElementById('thanks-line1').textContent = "We're so sorry to hear you won't be able to make it.";
+        document.getElementById('thanks-line2').textContent = "You'll be in our thoughts and prayers on the night.";
+    }
+
     form.style.transition = 'opacity 0.5s';
     form.style.opacity    = '0';
     setTimeout(() => {
@@ -77,6 +84,6 @@ export function initRSVP() {
 
         stopDots();
         btn.querySelector('.btn-text').textContent = 'Sent';
-        setTimeout(() => showThanks(form, rsvpTy), 700);
+        setTimeout(() => showThanks(form, rsvpTy, attend.value === 'yes'), 700);
     });
 }
