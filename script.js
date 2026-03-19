@@ -101,25 +101,27 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         }
 
+        let scratchedArea = 0;
+
         function doScratch(e) {
             if (!isScratching || cards[idx].revealed || !cards[idx].ctx) return;
             e.preventDefault();
             const { x, y } = getPos(e);
             const ctx = cards[idx].ctx;
 
+            // Draw the erase circle
             ctx.globalCompositeOperation = 'destination-out';
             const r = Math.max(canvas.width * 0.14, 18);
             ctx.beginPath();
             ctx.arc(x, y, r, 0, Math.PI * 2);
             ctx.fill();
 
-            const px = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-            let transparent = 0;
-            for (let i = 3; i < px.length; i += 48) {
-                if (px[i] < 20) transparent++;
+            // Accumulate scratched area — no getImageData, no GPU readback, instant
+            scratchedArea += Math.PI * r * r;
+            // Reveal once accumulated area ≥ 110% of the card surface (accounts for overlap)
+            if (scratchedArea >= canvas.width * canvas.height * 1.1) {
+                revealCard(idx);
             }
-            const pct = (transparent / (canvas.width * canvas.height / 12)) * 100;
-            if (pct > 52) revealCard(idx);
         }
 
         canvas.addEventListener('mousedown',  () => { isScratching = true; });

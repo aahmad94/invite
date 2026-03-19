@@ -494,6 +494,15 @@ body.curtains-open .hero-content {
     background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
 }
 
+/* ── PROGRAM TIME ────────────────────────────────────── */
+.prog-time {
+    font-family: var(--ff-sans);
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
 /* ── DRESS CODE ──────────────────────────────────────── */
 .dresscode-body {
     font-size: clamp(1rem, 2.5vw, 1.15rem);
@@ -501,15 +510,25 @@ body.curtains-open .hero-content {
     line-height: 1.8;
     margin-bottom: 36px;
 }
+.dresscode-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
 .dresscode-pill {
     display: inline-block;
     border: 1px solid var(--gold);
     color: var(--gold);
-    padding: 12px 32px;
+    padding: 12px 28px;
     border-radius: 40px;
-    font-size: 0.85rem;
-    letter-spacing: 3px;
+    font-size: 0.8rem;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
+}
+.dresscode-avoid {
+    border-color: rgba(212,175,55,0.3);
+    color: var(--muted);
 }
 
 /* ── RSVP ────────────────────────────────────────────── */
@@ -669,7 +688,9 @@ form {
 .section-thankyou {
     text-align: center;
     padding: clamp(100px, 16vw, 160px) 24px;
-    background: #050505;
+    background:
+        linear-gradient(rgba(5,5,5,0.72), rgba(5,5,5,0.78)),
+        url('IMG_9049 2.jpeg') center / cover no-repeat;
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.9s var(--ease-soft), transform 0.9s var(--ease-soft);
