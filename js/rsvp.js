@@ -3,7 +3,7 @@
    ============================================================ */
 
 // Paste your deployed Apps Script Web App URL here
-const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyX1pu5La61rhbw3P6NNYa_tMGwzIPXQIDMvEI8Rud6Gd4qTHn-rfvU4-_cNHnPgK5Z/exec';
 // Must match the SECRET value in your Apps Script
 const SUBMIT_SECRET   = 'barat2026';
 
