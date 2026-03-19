@@ -712,7 +712,7 @@ form {
     padding: clamp(100px, 16vw, 160px) 24px;
     background:
         linear-gradient(rgba(5,2,2,0.78), rgba(8,2,2,0.84)),
-        url('IMG_9049 2.jpeg') center / cover no-repeat;
+        url('HAK08808.JPG') center / cover no-repeat;
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.9s var(--ease-soft), transform 0.9s var(--ease-soft);
