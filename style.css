@@ -137,7 +137,7 @@ body.curtains-open .curtain.right { transform: translateX(100%); }
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 2px;
     opacity: 0;
     transform: translateY(32px);
     transition: opacity 1.2s 1.2s ease, transform 1.2s 1.2s ease;
@@ -165,7 +165,7 @@ body.curtains-open .hero-content {
     color: var(--gold);
     letter-spacing: 12px;
     line-height: 1;
-    margin: 16px 0 6px;
+    margin: 10px 0 2px;
 }
 
 .of-sister {
@@ -174,7 +174,7 @@ body.curtains-open .hero-content {
 }
 
 .couple-block {
-    margin-top: 22px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
