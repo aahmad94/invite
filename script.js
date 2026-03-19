@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }));
         // Init canvases AFTER main is visible so offsetWidth/Height are real
         setTimeout(initAllScratchCards, 80);
+        // Auto-reveal fallback starts from splash dismiss, not page load
+        canvases.forEach((_, idx) => {
+            setTimeout(() => revealCard(idx), 30000 + idx * 3000);
+        });
         startCountdown();
     }
 
@@ -132,9 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.addEventListener('touchstart', e => { isScratching = true; doScratch(e); }, { passive: false });
         canvas.addEventListener('touchend',   () => { isScratching = false; });
         canvas.addEventListener('touchmove',  doScratch, { passive: false });
-
-        // Auto-reveal staggered: 12 s, 14 s, 16 s
-        setTimeout(() => revealCard(idx), 12000 + idx * 2000);
     });
 
 
@@ -172,11 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(() => requestAnimationFrame(() => {
             gated.classList.add('fade-in');
         }));
-
-        // Smooth scroll to countdown after the fade
-        setTimeout(() => {
-            gated.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 750);
 
         // Kick off scroll-reveal observer for newly visible elements
         initScrollReveal();
