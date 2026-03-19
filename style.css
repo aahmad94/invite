@@ -760,7 +760,7 @@ form {
 @media (max-width: 600px) {
     .section-thankyou {
         background-size: 160%;
-        background-position: center center;
+        background-position: center 57.5%;
     }
 }
 
