@@ -41,9 +41,11 @@ export function initRSVP() {
         e.preventDefault();
 
         const name    = form.querySelector('[name="name"]').value.trim();
+        const email   = form.querySelector('[name="email"]').value.trim();
         const attend  = form.querySelector('[name="attend"]:checked');
 
         if (!name)   { shake(form.querySelector('[name="name"]').closest('.field')); return; }
+        if (!email)  { shake(form.querySelector('[name="email"]').closest('.field')); return; }
         if (!attend) { shake(form.querySelector('.radio-group')); return; }
 
         const btn = form.querySelector('.btn-confirm');
