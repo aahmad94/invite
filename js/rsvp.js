@@ -30,8 +30,8 @@ function showThanks(form, rsvpTy, attending) {
     document.getElementById('thanks-icon').textContent = '♡';
 
     if (!attending) {
-        document.getElementById('thanks-line1').textContent = 'We\'re so sorry to hear you won\'t be able to make it.';
-        document.getElementById('thanks-line2').textContent = 'You\'ll be in our thoughts and prayers on the night.';
+        document.getElementById('thanks-line1').textContent = "We're so sorry to hear you won't be able to make it.";
+        document.getElementById('thanks-line2').textContent = "You'll be in our thoughts and prayers on the night.";
     }
 
     const section = form.closest('.rsvp-section');
