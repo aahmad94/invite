@@ -647,6 +647,68 @@ form {
 
 .req { color: var(--gold); }
 
+/* Select field (party size) */
+.select-field select {
+    width: 100%;
+    padding: 26px 40px 8px 16px;
+    background: #1a0505;
+    border: 1px solid #3d1010;
+    border-radius: 6px;
+    color: var(--text);
+    font-family: var(--ff-sans);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+.select-field select:focus { border-color: var(--gold); }
+
+/* Custom dropdown arrow */
+.select-field::after {
+    content: '';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--muted);
+    pointer-events: none;
+    transition: border-top-color 0.3s;
+}
+.select-field select:focus ~ ::after,
+.select-field:focus-within::after { border-top-color: var(--gold); }
+
+/* Floating label for select — uses :valid since select has required + empty default */
+.select-field select + label { top: 50%; transform: translateY(-50%); }
+.select-field select:focus + label,
+.select-field select:valid + label {
+    top: 8px;
+    transform: translateY(0);
+    font-size: 0.72rem;
+    color: var(--gold);
+}
+
+/* Show/hide animation */
+.party-size-field {
+    overflow: hidden;
+    max-height: 0;
+    margin-bottom: 0;
+    opacity: 0;
+    transition: max-height 0.35s var(--ease-soft),
+                opacity 0.3s var(--ease-soft),
+                margin-bottom 0.35s var(--ease-soft);
+}
+.party-size-field.visible {
+    max-height: 90px;
+    margin-bottom: 22px;
+    opacity: 1;
+}
+
 /* Radio group */
 .radio-group {
     margin-bottom: 22px;

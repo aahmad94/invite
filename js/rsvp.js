@@ -5,7 +5,7 @@
 import { startDots, stopDots } from './dots.js';
 
 // Paste your deployed Apps Script Web App URL here
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyX1pu5La61rhbw3P6NNYa_tMGwzIPXQIDMvEI8Rud6Gd4qTHn-rfvU4-_cNHnPgK5Z/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxUkbr1R_lbwy63rJofNOyer8Eb5BnfF9ojLmDw_LJwiRIT5Qp5KZQ0d-cclNwsJbBQ/exec';
 // Must match the SECRET value in your Apps Script
 const SUBMIT_SECRET   = 'barat2026';
 
@@ -49,19 +49,32 @@ function showThanks(form, rsvpTy, attending) {
 }
 
 export function initRSVP() {
-    const form   = document.getElementById('rsvp-form');
-    const rsvpTy = document.getElementById('rsvp-thanks');
+    const form          = document.getElementById('rsvp-form');
+    const rsvpTy        = document.getElementById('rsvp-thanks');
+    const partySizeField = document.getElementById('party-size-field');
+
+    // Show party size only when attending yes
+    form.querySelectorAll('[name="attend"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            const attending = form.querySelector('[name="attend"]:checked')?.value === 'yes';
+            partySizeField.classList.toggle('visible', attending);
+            form.querySelector('[name="partySize"]').required = attending;
+        });
+    });
 
     form.addEventListener('submit', async e => {
         e.preventDefault();
 
-        const name    = form.querySelector('[name="name"]').value.trim();
-        const email   = form.querySelector('[name="email"]').value.trim();
-        const attend  = form.querySelector('[name="attend"]:checked');
+        const name       = form.querySelector('[name="name"]').value.trim();
+        const email      = form.querySelector('[name="email"]').value.trim();
+        const attend     = form.querySelector('[name="attend"]:checked');
+        const partySize  = form.querySelector('[name="partySize"]').value;
+        const attending  = attend?.value === 'yes';
 
         if (!name)   { shake(form.querySelector('[name="name"]').closest('.field')); return; }
         if (!email)  { shake(form.querySelector('[name="email"]').closest('.field')); return; }
         if (!attend) { shake(form.querySelector('.radio-group')); return; }
+        if (attending && !partySize) { shake(partySizeField); return; }
 
         const btn = form.querySelector('.btn-confirm');
         btn.classList.add('sent');
@@ -69,11 +82,12 @@ export function initRSVP() {
         startDots(btn.querySelector('.btn-text'), 'Sending');
 
         const payload = {
-            secret:  SUBMIT_SECRET,
+            secret:     SUBMIT_SECRET,
             name,
-            email:   form.querySelector('[name="email"]').value.trim(),
-            attend:  attend.value,
-            message: form.querySelector('[name="message"]').value.trim(),
+            email,
+            attend:     attend.value,
+            partySize:  attending ? partySize : '',
+            message:    form.querySelector('[name="message"]').value.trim(),
         };
 
         try {
